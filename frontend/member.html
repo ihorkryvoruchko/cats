@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Seite</title>
+	<link rel="stylesheet" href="./assets/css/style.css">
+</head>
+<body>
+	<header>
+		<img>
+		<div>Cat Mafia</div>
+		<ul>
+			<li><a href="./index.html">Mitglieder</a></li>
+			<li><a href="./member.html">Neues Mitglied</a></li>
+		</ul>
+		<img>
+	</header>
+	<main>
+		<h1>Neues Mitglied anlegen.</h1>
+		<p>Wilkommen in der Familie.</p>
+		<p>Fülle das Formuliar aus, um um ein neues Mitglied der Cat Mafia zu registrieren. Der Avatar wird automatisch für dich erstellen.</p>
+		<div>
+			<div>Mitgliedsdaten</div>
+			<form>
+				<input id="new-member-name" type="text" placeholder="z.B. Big Meowski">
+				<select id="new-member-rank">
+					<option>Bitte Rang wählen</option>
+					<option>Don</option>
+					<option>Capo</option>
+					<option>Underboss</option>
+					<option>Soldier</option>
+					<option>Enforcer</option>
+					<option>Made Man</option>
+					<option>Associate</option>
+				</select>
+				<input id="new-member-speciality" type="text" placeholder="z.B. Finanzen, Spionage, Logistik ...">
+			</form>
+		</div>
+		<div>
+			<h3>Vorschau</h3>
+			<div>
+				<img id="member-preview-img">
+				<p>Dein Avatar wird automatisch erstellt und basiert auf dem Namen</p>
+				<div>
+					<img>
+					<p>Die Avatar-URL wird vom Server generiert und mit dem Namen als Seed erstellt</p>
+				</div>
+			</div>
+		</div>
+			<input type="button" id="new-member-button" value="Mitglied anlegen">
+		<a href="./index.html"><- Zurück zur Übersicht</a>
+	</main>
+	<footer><img>Good Cats. Bad Business. <div>Cat Mafia 2025</div></footer>
+	<script src="assets/js/main.js" type="module"></script>
+	<script src="assets/js/newMember.js" type="module"></script>
+</body>
+</html>
