@@ -1,6 +1,5 @@
 import express from 'express'
 import cors from 'cors'
-import {writeFile} from 'fs/promises'
 import {checkIfDataAvailable, getAllMembers, createNewMember} from './db.js'
 
 checkIfDataAvailable()
