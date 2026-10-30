@@ -16,7 +16,7 @@ export async function checkIfDataAvailable(){
 }
 
 async function createNewDatabase() {
-    await mkdir('.data', { recursive: true })
+    await mkdir('./data', { recursive: true })
     await writeFile(PATH, JSON.stringify([], null, 2))
 }
 
