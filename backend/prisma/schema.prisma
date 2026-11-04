@@ -1,0 +1,77 @@
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Clan {
+  id            Int           @id @default(autoincrement())
+  name          String        @unique
+  bossId        Int?        
+  boss          Cat?           @relation("ClanBoss", fields: [bossId], references: [id], onDelete: SetNull)
+  cats          Cat[]         @relation("ClanMembers") // Alle Katzen dieses Clans
+  districts     District[]
+  fightsWon     Fight[]
+  clanFights    ClanFight[]
+}
+
+model Status {
+  id            Int           @id @default(autoincrement())
+  name          String        @unique
+  cats          Cat[]
+}
+
+model Rank {
+  id            Int           @id @default(autoincrement())
+  name          String        @unique
+  cats          Cat[]
+}
+
+model Cat {
+  id            Int           @id @default(autoincrement())
+  name          String        @unique
+  skill         String?
+  avatarUrl     String
+  
+  clanId        Int?
+  clan          Clan?          @relation("ClanMembers", fields: [clanId], references: [id])
+  
+  statusId      Int
+  status        Status        @relation(fields: [statusId], references: [id])
+  
+  rankId        Int
+  rank          Rank          @relation(fields: [rankId], references: [id])
+  
+  bossOfClans   Clan[]        @relation("ClanBoss")
+}
+
+model District {
+  id            Int           @id @default(autoincrement())
+  name          String        @unique
+  fishration    Int
+  clanId        Int
+  clan          Clan          @relation(fields: [clanId], references: [id])
+  fights        Fight[]
+}
+
+model Fight {
+  id            Int           @id @default(autoincrement())
+  status        String
+  date          DateTime?
+  winnerId      Int
+  winner        Clan          @relation(fields: [winnerId], references: [id])
+  districtId    Int
+  district      District      @relation(fields: [districtId], references: [id])
+  clanFights    ClanFight[]
+}
+
+model ClanFight {
+  id            Int           @id @default(autoincrement())
+  clanId        Int
+  clan          Clan          @relation(fields: [clanId], references: [id])
+  fightId       Int
+  fight         Fight         @relation(fields: [fightId], references: [id])
+}
