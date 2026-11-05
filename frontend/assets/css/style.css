@@ -170,14 +170,14 @@ button:hover, input[type="button"]:hover {
 /* ==========================================================================
    4. CAT GRID (3 KATZEN PRO ZEILE) & SECTIONS
    ========================================================================== */
-#cats-without-clan-container, #members-container, #clans-container {
+#cats-without-clan-container, #members-container, #clans-container, #districts-container {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1.5rem;
 }
 
 /* Einzelne Katzen-Kachel */
-#cats-without-clan-container > div, #members-container > div, #clans-container > div {
+#cats-without-clan-container > div, #members-container > div, #clans-container > div, #districts-container > div {
   background-color: var(--bg-card);
   border-radius: var(--radius);
   border: 1px solid var(--border-color);
@@ -190,7 +190,7 @@ button:hover, input[type="button"]:hover {
   position: relative;
 }
 
-#cats-without-clan-container > div:hover, #members-container > div:hover, #clans-container > div:hover {
+#cats-without-clan-container > div:hover, #members-container > div:hover, #clans-container > div:hover, #districts-container > div:hover {
   transform: translateY(-6px);
   border-color: var(--accent-gold);
   box-shadow: var(--shadow);
@@ -343,7 +343,7 @@ footer div {
    7. RESPONSIVE DESIGN
    ========================================================================== */
 @media (max-width: 992px) {
-  #cats-without-clan-container, #members-container, #clans-container {
+  #cats-without-clan-container, #members-container, #clans-container, #districts-container {
     grid-template-columns: repeat(2, 1fr);
   }
 }
@@ -357,7 +357,7 @@ footer div {
     width: 100%;
     margin-top: 0.5rem;
   }
-  #cats-without-clan-container, #members-container, #clans-container {
+  #cats-without-clan-container, #members-container, #clans-container, #districts-container {
     grid-template-columns: 1fr;
   }
 }
