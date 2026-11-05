@@ -3,7 +3,19 @@ import { PrismaClient } from '@prisma/client';
 const prisma = new PrismaClient();
 
 export async function getAllClans() {
-  const clans = await prisma.clan.findMany()
+  const clans = await prisma.clan.findMany({
+    select: {
+      id: true,
+      name: true,
+      boss: {
+        select: {
+          id: true,
+          name: true,
+          avatarUrl: true
+        }
+      }
+    }
+  })
 
   return clans
 }

@@ -3,6 +3,7 @@ import cors from 'cors'
 import { clanRouter } from './src/router/clan.router.js'
 import { catRouter } from './src/router/cat.router.js'
 import { districtRouter } from './src/router/district.router.js'
+import { rankRouter } from './src/router/rank.router.js'
 
 const PORT = 3000
 const app = express()
@@ -12,6 +13,7 @@ app.use(express.json())
 app.use(clanRouter)
 app.use(catRouter)
 app.use(districtRouter)
+app.use(rankRouter)
 
 app.listen(PORT, () => {
     console.log("der Server läuft auf " + PORT)

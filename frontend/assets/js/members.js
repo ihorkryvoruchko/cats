@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded' , async () => {
 })
 
 async function getMembers() {
-    const data = await fetch(url + "members")
+    const data = await fetch(url + "cat")
     const members = await data.json()
 
     return members
@@ -29,17 +29,17 @@ async function showMembers(members) {
         div.appendChild(name)
 
         const rank = document.createElement("div")
-        rank.textContent = member.rank
+        rank.textContent = member.rank.name
         rank.classList.add("mitglied-rank")
         div.appendChild(rank)
 
         const speciality = document.createElement("div")
-        speciality.textContent = member.speciality
+        speciality.textContent = member.skill
         speciality.classList.add("mitglied-speciality")
         div.appendChild(speciality)
 
         const status = document.createElement("div")
-        status.textContent = member.status
+        status.textContent = member.status.name
         status.classList.add("mitglied-status")
         div.appendChild(status)
 
