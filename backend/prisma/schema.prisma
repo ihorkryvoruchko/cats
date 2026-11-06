@@ -59,10 +59,10 @@ model District {
 
 model Fight {
   id            Int           @id @default(autoincrement())
-  isActive      Boolean       @default(true)
-  date          DateTime?
-  winnerId      Int
-  winner        Clan          @relation(fields: [winnerId], references: [id])
+  startAt       DateTime
+  endAt         DateTime
+  winnerId      Int?
+  winner        Clan?          @relation(fields: [winnerId], references: [id])
   districtId    Int
   district      District      @relation(fields: [districtId], references: [id])
   clanFights    ClanFight[]

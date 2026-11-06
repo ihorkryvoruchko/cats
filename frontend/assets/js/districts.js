@@ -24,8 +24,26 @@ async function getDistricts() {
     const data = await fetch(url + "district")
     const districts = await data.json()
 
+    for (const district of districts) {
+
+        for (const fight of district.fights) {
+            const endTime = new Date(new Date(fight.endAt).getTime() + 60 * 1000)
+            const delay = endTime.getTime() - Date.now()
+
+            setTimeout(async () => {
+                const data = await fetch(url + "fight/winner", {
+                    method: "PATCH",
+                    headers: {}
+                })
+                document.location.reload()
+            }, delay)
+        }
+        
+    }
+
     return districts
 }
+
 
 async function showDistricts(districts) {
     
@@ -42,12 +60,20 @@ async function showDistricts(districts) {
         clanName.classList.add("district-clan-name")
         div.appendChild(clanName)
 
-        const fightButton = document.createElement("button")
-        fightButton.dataset.districtId = district.id
-        fightButton.dataset.clanId = district.clan.id
-        fightButton.textContent = "Lass uns kämpfen!"
-        fightButton.classList.add("district-fight-button")
-        div.appendChild(fightButton)
+        if (district.fights.length > 0) {
+            div.classList.add("district-fight-ongoing")
+
+            const fightInfo = document.createElement("div")
+            fightInfo.textContent = "Kampf mit " + district.fights[0].clanFights[0].clan.name + " läuft bereits!"
+            div.appendChild(fightInfo)
+        } else {
+            const fightButton = document.createElement("button")
+            fightButton.dataset.districtId = district.id
+            fightButton.dataset.clanId = district.clan.id
+            fightButton.textContent = "Lass uns kämpfen!"
+            fightButton.classList.add("district-fight-button")
+            div.appendChild(fightButton)
+        }
 
         districtsContainer.appendChild(div)
     }

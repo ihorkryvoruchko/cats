@@ -34,6 +34,10 @@ async function showClans(clans) {
         img.classList.add("mitglied-img")
         div.appendChild(img)
 
+        const catsCountDiv = document.createElement("div")
+        catsCountDiv.textContent = `Mitglieder: ${clan._count.cats}`
+        div.appendChild(catsCountDiv)
+
         const name = document.createElement("div")
         name.textContent = clan.name
         name.classList.add("mitglied-name")

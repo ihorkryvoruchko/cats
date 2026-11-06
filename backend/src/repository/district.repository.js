@@ -20,7 +20,37 @@ export async function getAllDistricts() {
               }
             }
           }
-        }
+        },
+        fights: {
+          select: {
+            id: true,
+            startAt: true,
+            endAt: true,
+            clanFights: {
+              select: {
+                id: true,
+                clan: {
+                  select: {
+                    id: true,
+                    name: true,
+                    boss: {
+                      select: {
+                        id: true,
+                        name: true,
+                        avatarUrl: true,
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          where: {
+            winner: {
+              is: null
+            }
+          }  
+        },
       }
     })
 
