@@ -7,6 +7,9 @@ export async function getAllClans() {
     select: {
       id: true,
       name: true,
+      _count: {
+          select: { cats: true }
+        },
       boss: {
         select: {
           id: true,
